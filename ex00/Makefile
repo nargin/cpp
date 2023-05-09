@@ -7,8 +7,8 @@ ex00:
 	$(CXX) $(CXXFLAGS) megaphone.cpp -o megaphone
 
 clean:
-
-fclean: clean
+	rm *.o
+fclean:
 	rm -rf megaphone
 
 re: fclean all
