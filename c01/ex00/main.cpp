@@ -1,34 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   repertory.hpp                                      :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: romaurel <romaurel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/09 14:02:23 by romaurel          #+#    #+#             */
-/*   Updated: 2023/06/06 19:52:59 by romaurel         ###   ########.fr       */
+/*   Created: 2023/06/06 17:44:54 by romaurel          #+#    #+#             */
+/*   Updated: 2023/06/06 17:45:00 by romaurel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef REPERTORY_HPP
-# define REPERTORY_HPP
+#include "Zombie.hpp"
 
-# include <iostream>
-# include <string>
-# include <iomanip>
-# include "contact.hpp"
+int		main(void)
+{
+	Zombie	*zombieHeap;
+	Zombie	*zombieStack;
 
-class PhoneBook {
-public:
-	PhoneBook();
-	~PhoneBook();
-	void addContact(void);
-	void searchContact(void);
-
-private:
-	static const int MAX_CONTACTS = 8;
-	Contact contacts[MAX_CONTACTS];
-	int nbContacts;
-};
-
-#endif
+	zombieHeap = new Zombie("Heap", "Heap");
+	zombieStack = newZombie("Stack", "Stack");
+	zombieHeap->announce();
+	zombieStack->announce();
+	delete zombieHeap;
+	delete zombieStack;
+	return (0);
+}

@@ -1,18 +1,19 @@
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
+NAME = borzoi
+SRC = repertory.cpp contact.cpp
+OBJ = $(SRC:.cpp=.o)
 
-SRC = repertory.cpp
+all: $(NAME)
 
-all: ex01
-
-ex01:
-	$(CXX) $(CXXFLAGS) -I./ $(SRC) -o repertory
+$(NAME): $(OBJ)
+	$(CXX) $(CXXFLAGS) -I./ $(OBJ) -o $(NAME)
 
 clean:
-	rm -f *.o
+	rm -f $(OBJ)
 
 fclean: clean
-	rm -f repertory
+	rm -f $(NAME)
 
 re: fclean all
 

@@ -1,34 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   repertory.hpp                                      :+:      :+:    :+:   */
+/*   Zombie.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: romaurel <romaurel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/09 14:02:23 by romaurel          #+#    #+#             */
-/*   Updated: 2023/06/06 19:52:59 by romaurel         ###   ########.fr       */
+/*   Created: 2023/06/06 15:49:23 by romaurel          #+#    #+#             */
+/*   Updated: 2023/06/06 17:44:27 by romaurel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef REPERTORY_HPP
-# define REPERTORY_HPP
+#include "Zombie.hpp"
 
-# include <iostream>
-# include <string>
-# include <iomanip>
-# include "contact.hpp"
+Zombie::Zombie(std::string name, std::string type)
+{
+	_name = name;
+	_type = type;
+}
+Zombie::~Zombie(void)
+{
+	std::cout << _name << " is dead" << std::endl;
+}
 
-class PhoneBook {
-public:
-	PhoneBook();
-	~PhoneBook();
-	void addContact(void);
-	void searchContact(void);
+void	Zombie::announce(void) const
+{
+	std::cout << "<" << this->_name << this->_type << " BraiiiiiiinnnzzzZ..." << std::endl;
+}
 
-private:
-	static const int MAX_CONTACTS = 8;
-	Contact contacts[MAX_CONTACTS];
-	int nbContacts;
-};
-
-#endif
+std::string	Zombie::getName(void) const
+{
+	return (this->_name);
+}

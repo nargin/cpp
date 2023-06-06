@@ -1,34 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   repertory.hpp                                      :+:      :+:    :+:   */
+/*   Zombie.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: romaurel <romaurel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/09 14:02:23 by romaurel          #+#    #+#             */
-/*   Updated: 2023/06/06 19:52:59 by romaurel         ###   ########.fr       */
+/*   Created: 2023/06/06 15:48:56 by romaurel          #+#    #+#             */
+/*   Updated: 2023/06/06 15:55:49 by romaurel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef REPERTORY_HPP
-# define REPERTORY_HPP
+#ifndef ZOMBIE_HPP
+# define ZOMBIE_HPP
 
-# include <iostream>
-# include <string>
-# include <iomanip>
-# include "contact.hpp"
+#include <iostream>
 
-class PhoneBook {
-public:
-	PhoneBook();
-	~PhoneBook();
-	void addContact(void);
-	void searchContact(void);
-
-private:
-	static const int MAX_CONTACTS = 8;
-	Contact contacts[MAX_CONTACTS];
-	int nbContacts;
+class Zombie
+{
+	public:
+		Zombie(std::string name, std::string type);
+		~Zombie(void);
+		void announce(void);
+	private:
+		std::string	_name;
+		std::string	_type;
 };
 
 #endif

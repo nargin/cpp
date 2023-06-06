@@ -1,18 +1,19 @@
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
-
+NAME = borzoi
 SRC = Account.cpp tests.cpp
+OBJ = $(SRC:.cpp=.o)
 
-all: XiJinping
+all: $(NAME)
 
-XiJinping:
-	$(CXX) $(CXXFLAGS) -I./ $(SRC) -o borzoi
+$(NAME): $(OBJ)
+	$(CXX) $(CXXFLAGS) -I./ $(OBJ) -o $(NAME)
 
 clean:
-	rm -f *.o
+	rm -f $(OBJ)
 
 fclean: clean
-	rm -f borzoi
+	rm -f $(NAME)
 
 re: fclean all
 
