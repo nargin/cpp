@@ -6,7 +6,7 @@
 /*   By: romaurel <romaurel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 19:35:07 by romaurel          #+#    #+#             */
-/*   Updated: 2023/06/06 20:08:01 by romaurel         ###   ########.fr       */
+/*   Updated: 2023/06/06 22:23:25 by romaurel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,13 +75,27 @@ void PhoneBook::addContact() {
 		this->nbContacts = 0;
 }
 
+static void	printContact(std::string str) {
+	if (str.length() > 10)
+		std::cout << " " << str.substr(0, 9) << ". |";
+	else
+		std::cout << " " << str << " |";
+}
+
 void PhoneBook::searchContact(void) {
-	if (this->nbContacts == 0) {
+	if (this->nbContacts == 0 && this->contacts[0].getFirstName().empty()) {
 		std::cout << "No contact to display." << std::endl;
 		return ;
 	}
-	for (int i = 0; i < this->nbContacts; i++)
-		std::cout << "| " << i + 1 << " | " << this->contacts[i].getFirstName() << " |" << std::endl;
+	for (int i = 0; i < MAX_CONTACTS; i++){
+		if (this->contacts[i].getFirstName().empty())
+			continue ;
+		std::cout << i + 1 << " |";
+		printContact(this->contacts[i].getFirstName());
+		printContact(this->contacts[i].getLastName());
+		printContact(this->contacts[i].getNickname());
+		std::cout << std::endl;
+	}
 	std::cout << "Enter the index of the contact you want to see: ";
 	std::string	index;
 	std::getline(std::cin, index);
