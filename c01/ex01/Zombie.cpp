@@ -3,19 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   Zombie.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: romaurel <romaurel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 15:49:23 by romaurel          #+#    #+#             */
-/*   Updated: 2023/06/06 22:37:24 by romaurel         ###   ########.fr       */
+/*   Updated: 2023/06/07 01:37:58 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
 
-Zombie::Zombie(std::string name, std::string type)
+Zombie::Zombie()
 {
-	_name = name;
-	_type = type;
+	;
 }
 Zombie::~Zombie(void)
 {
@@ -23,9 +22,9 @@ Zombie::~Zombie(void)
 }
 
 void	Zombie::announce(void) {
-	std::cout << this->_name << " " << this->_type << " BraiiiiiiinnnzzzZ..." << std::endl;
+	std::cout << this->_name << " BraiiiiiiinnnzzzZ..." << std::endl;
 }
 
-std::string	Zombie::getName(void) {
-	return (this->_name);
+std::string	Zombie::getName(std::string name) {
+	return (this->_name = name);
 }

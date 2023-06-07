@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: romaurel <romaurel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 17:44:54 by romaurel          #+#    #+#             */
-/*   Updated: 2023/06/06 22:39:24 by romaurel         ###   ########.fr       */
+/*   Updated: 2023/06/07 01:37:15 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,9 @@
 
 int		main(void)
 {
-	Zombie	*zombieHeap;
-	Zombie	*zombieStack;
-
-	zombieHeap = new Zombie("Heap", "Heap");
-	zombieStack = newZombie("Stack", "Stack");
-	zombieHeap->announce();
-	zombieStack->announce();
-	delete zombieHeap;
-	delete zombieStack;
-	randomChump("Random");
-	return (0);
+	Zombie *muchos = ZombieHorde(10, "broZoi");
+	for (int i = 0; i < 10; i++)
+		muchos[i].announce();
+	delete[] muchos;
+	return 0;
 }

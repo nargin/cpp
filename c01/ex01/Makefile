@@ -1,7 +1,7 @@
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 NAME = borzoi
-SRC = main.cpp newZombie.cpp randomChump.cpp Zombie.cpp
+SRC = main.cpp Zombie.cpp ZombieHorde.cpp
 OBJ = $(SRC:.cpp=.o)
 
 all: $(NAME)
