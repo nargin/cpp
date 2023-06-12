@@ -6,7 +6,7 @@
 /*   By: romaurel <romaurel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 09:30:13 by romaurel          #+#    #+#             */
-/*   Updated: 2023/06/09 09:35:25 by romaurel         ###   ########.fr       */
+/*   Updated: 2023/06/12 22:13:52 by romaurel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,7 @@ class Fixed
 		int					_rawBits;
 		static const int	_fractionalBits = 8;
 };
+
+std::ostream &	operator<<(std::ostream & o, Fixed const & rhs);
 
 #endif

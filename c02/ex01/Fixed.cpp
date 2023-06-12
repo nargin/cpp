@@ -6,7 +6,7 @@
 /*   By: romaurel <romaurel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 09:30:52 by romaurel          #+#    #+#             */
-/*   Updated: 2023/06/09 09:31:33 by romaurel         ###   ########.fr       */
+/*   Updated: 2023/06/12 22:14:03 by romaurel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,3 +72,8 @@ int		Fixed::toInt(void) const
 	return this->_rawBits >> Fixed::_fractionalBits;
 }
 
+std::ostream &	operator<<(std::ostream & o, Fixed const & rhs)
+{
+	o << rhs.toFloat();
+	return o;
+}
