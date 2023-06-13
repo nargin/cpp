@@ -101,24 +101,24 @@ bool			operator!=(Fixed const & lhs, Fixed const & rhs)
 	return lhs.getRawBits() != rhs.getRawBits();
 }
 
-Fixed			operator+(Fixed const & lhs, Fixed const & rhs)
+Fixed			Fixed::operator+(Fixed const & rhs)
 {
-	return Fixed(lhs.toFloat() + rhs.toFloat());
+	return Fixed(toFloat() + rhs.toFloat());
 }
 
-Fixed			operator-(Fixed const & lhs, Fixed const & rhs)
+Fixed			Fixed::operator-(Fixed const & rhs)
 {
-	return Fixed(lhs.toFloat() - rhs.toFloat());
+	return Fixed(toFloat() - rhs.toFloat());
 }
 
-Fixed			operator*(Fixed const & lhs, Fixed const & rhs)
+Fixed			Fixed::operator*(Fixed const & rhs)
 {
-	return Fixed(lhs.toFloat() * rhs.toFloat());
+	return Fixed(toFloat() * rhs.toFloat());
 }
 
-Fixed			operator/(Fixed const & lhs, Fixed const & rhs)
+Fixed			Fixed::operator/(Fixed const & rhs)
 {
-	return Fixed(lhs.toFloat() / rhs.toFloat());
+	return Fixed(toFloat() / rhs.toFloat());
 }
 
 Fixed &			Fixed::operator++(void)

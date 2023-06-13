@@ -33,10 +33,10 @@ class Fixed
 		float	toFloat(void) const;
 		int		toInt(void) const;
 		
-		Fixed			operator+(Fixed const & lhs, Fixed const & rhs);
-		Fixed			operator-(Fixed const & lhs, Fixed const & rhs);
-		Fixed			operator*(Fixed const & lhs, Fixed const & rhs);
-		Fixed			operator/(Fixed const & lhs, Fixed const & rhs);
+		Fixed			operator+(Fixed const & rhs);
+		Fixed			operator-(Fixed const & rhs);
+		Fixed			operator*(Fixed const & rhs);
+		Fixed			operator/(Fixed const & rhs);
 		
 		Fixed			&operator++(void);
 		Fixed			operator++(int);
