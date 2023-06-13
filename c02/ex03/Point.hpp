@@ -6,7 +6,7 @@
 /*   By: romaurel <romaurel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 14:44:25 by robin             #+#    #+#             */
-/*   Updated: 2023/06/13 17:43:14 by romaurel         ###   ########.fr       */
+/*   Updated: 2023/06/13 17:50:40 by romaurel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ class Point
 
 		Point & operator=(Point const & rhs);
 
-		Fixed getX(void) const;
-		Fixed getY(void) const;
+		float getX(void) const;
+		float getY(void) const;
 
 	private:
 		Fixed _x;

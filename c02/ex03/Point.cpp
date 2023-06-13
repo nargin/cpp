@@ -6,7 +6,7 @@
 /*   By: romaurel <romaurel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 14:44:43 by robin             #+#    #+#             */
-/*   Updated: 2023/06/13 16:23:20 by romaurel         ###   ########.fr       */
+/*   Updated: 2023/06/13 17:56:28 by romaurel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,11 @@ Point & Point::operator=(Point const & rhs)
 	return *this;
 }
 
-Fixed Point::getX(void) const {
+float Point::getX(void) const {
 	return this->_x.toFloat();
 }
 
-Fixed Point::getY(void) const {
+float Point::getY(void) const {
 	return this->_y.toFloat();
 }
 
