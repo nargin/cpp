@@ -3,51 +3,53 @@
 /*                                                        :::      ::::::::   */
 /*   Point.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: robin <robin@student.42.fr>                +#+  +:+       +#+        */
+/*   By: romaurel <romaurel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 14:44:43 by robin             #+#    #+#             */
-/*   Updated: 2023/06/13 14:56:12 by robin            ###   ########.fr       */
+/*   Updated: 2023/06/13 16:23:20 by romaurel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Point.hpp"
+#include "Fixed.hpp"
 
 Point::Point(void) : _x(0), _y(0)
 {
-    
+	
 }
 
 Point::Point(Point const & src) : _x(src.getX()), _y(src.getY())
 {
-    
+	
 }
 
 Point::Point(float const x, float const y) : _x(x), _y(y)
 {
-    
+	
 }
 
 Point::~Point(void)
 {
-    
-}
-
-float Point::getX(void) const
-{
-    return this->_x.toFloat();
-}
-
-float Point::getY(void) const
-{
-    return this->_y.toFloat();
+	
 }
 
 Point & Point::operator=(Point const & rhs)
 {
-    if (this != &rhs)
-    {
-        this->_x = rhs.getX();
-        this->_y = rhs.getY();
-    }
-    return *this;
+	_x = rhs.getX();
+	_y = rhs.getY();
+	return *this;
+}
+
+Fixed Point::getX(void) const {
+	return this->_x.toFloat();
+}
+
+Fixed Point::getY(void) const {
+	return this->_y.toFloat();
+}
+
+std::ostream & operator<<(std::ostream & o, Point const & rhs)
+{
+	o << "Point(" << rhs.getX() << ", " << rhs.getY() << ")";
+	return o;
 }

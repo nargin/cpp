@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Point.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: robin <robin@student.42.fr>                +#+  +:+       +#+        */
+/*   By: romaurel <romaurel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 14:44:25 by robin             #+#    #+#             */
-/*   Updated: 2023/06/13 14:52:34 by robin            ###   ########.fr       */
+/*   Updated: 2023/06/13 17:43:14 by romaurel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,20 +17,24 @@
 
 class Point
 {
-    public:
-        Point(void);
-        Point(Point const & src);
-        Point(float const x, float const y);
-        ~Point(void);
+	public:
+		Point(void);
+		Point(Point const & src);
+		Point(float const x, float const y);
+		~Point(void);
 
-        Point & operator=(Point const & rhs);
+		Point & operator=(Point const & rhs);
 
-        float getX(void) const;
-        float getY(void) const;
+		Fixed getX(void) const;
+		Fixed getY(void) const;
 
-    private:
-        Fixed const _x;
-        Fixed const _y;
+	private:
+		Fixed _x;
+		Fixed _y;
 };
+
+std::ostream & operator<<(std::ostream & o, Point const & rhs);
+
+bool bsp(Point const a, Point const b, Point const c, Point const point);
 
 #endif

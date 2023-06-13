@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: robin <robin@student.42.fr>                +#+  +:+       +#+        */
+/*   By: romaurel <romaurel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 09:30:13 by romaurel          #+#    #+#             */
-/*   Updated: 2023/06/13 14:55:21 by robin            ###   ########.fr       */
+/*   Updated: 2023/06/13 16:22:49 by romaurel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,27 +25,12 @@ class Fixed
 		Fixed(float const n);
 		~Fixed(void);
 
-		Fixed &	operator=(Fixed const & rhs);
 
 		int		getRawBits(void) const;
 		void	setRawBits(int const raw);
 
 		float	toFloat(void) const;
 		int		toInt(void) const;
-		
-		Fixed			operator+(Fixed const & rhs);
-		Fixed			operator-(Fixed const & rhs);
-		Fixed			operator*(Fixed const & rhs);
-		Fixed			operator/(Fixed const & rhs);
-		
-		Fixed			&operator++(void);
-		Fixed			operator++(int);
-		Fixed			&operator--(void);
-		Fixed			operator--(int);
-		static Fixed			&min(Fixed & lhs, Fixed & rhs);
-		static Fixed			&max(Fixed & lhs, Fixed & rhs);
-		static Fixed const		&min(Fixed const & lhs, Fixed const & rhs);
-		static Fixed const		&max(Fixed const & lhs, Fixed const & rhs);
 
 	private:
 		int					_rawBits;
@@ -53,12 +38,5 @@ class Fixed
 };
 
 std::ostream &	operator<<(std::ostream & o, Fixed const & rhs);
-
-bool			operator>(Fixed const & lhs, Fixed const & rhs);
-bool			operator<(Fixed const & lhs, Fixed const & rhs);
-bool			operator>=(Fixed const & lhs, Fixed const & rhs);
-bool			operator<=(Fixed const & lhs, Fixed const & rhs);
-bool			operator==(Fixed const & lhs, Fixed const & rhs);
-bool			operator!=(Fixed const & lhs, Fixed const & rhs);
 
 #endif
