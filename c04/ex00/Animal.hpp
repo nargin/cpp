@@ -6,7 +6,7 @@
 /*   By: romaurel <romaurel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 18:20:56 by romaurel          #+#    #+#             */
-/*   Updated: 2023/06/14 19:36:50 by romaurel         ###   ########.fr       */
+/*   Updated: 2023/06/14 20:16:05 by romaurel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 #include <iostream>
 #include <string>
-#include "Brain.hpp"
 
 class Animal
 {
