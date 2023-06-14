@@ -5,36 +5,35 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: robin <robin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/14 01:22:37 by robin             #+#    #+#             */
-/*   Updated: 2023/06/14 01:36:01 by robin            ###   ########.fr       */
+/*   Created: 2023/06/14 03:14:53 by robin             #+#    #+#             */
+/*   Updated: 2023/06/14 03:18:44 by robin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CLAPTRAP_HPP
 # define CLAPTRAP_HPP
 
-# include <string>
-# include <iostream>
+#include <iostream>
 
-class ClapTrap
+class	ClapTrap
 {
     public:
         ClapTrap(std::string name) {
+            std::cout << "ClapTrap " << name << " created" << std::endl;
             this->_name = name;
-            this->_hitPoints = 10;
-            this->_energyPoints = 10;
-            this->_attackDamage = 0;
-            std::cout << "ClapTrap " << this->_name << " is created" << std::endl;
+            this->_hitPoints = 100;
+            this->_energyPoints = 50;
+            this->_attackDamage = 20;
         };
         
         ClapTrap(ClapTrap const& src) {
+            std::cout << "ClapTrap " << src._name << " created by copy" << std::endl;
             *this = src;
             this->_name += "_copy";
-            std::cout << "ClapTrap " << this->_name << " is copied" << std::endl;
         };
-        
+
         ~ClapTrap(void) {
-            std::cout << "ClapTrap " << this->_name << " is destroyed" << std::endl;
+            std::cout << "ClapTrap " << this->_name << " destroyed" << std::endl;
         };
 
         ClapTrap&	operator=(ClapTrap const& src);
