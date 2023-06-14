@@ -6,7 +6,7 @@
 /*   By: romaurel <romaurel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 18:20:56 by romaurel          #+#    #+#             */
-/*   Updated: 2023/06/14 18:25:14 by romaurel         ###   ########.fr       */
+/*   Updated: 2023/06/14 20:07:54 by romaurel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,9 @@
 class Animal
 {
 	public:
+		virtual void	makeSound(void) const{
+		};
+
 		Animal(void) {
 			std::cout << "Animal constructor called" << std::endl;
 		};
@@ -34,10 +37,8 @@ class Animal
 				this->_type = rhs.getType();
 			return *this;
 		};
-		virtual void	makeSound(void) const {
-		};
 		std::string		getType(void) const {
-			return !this->_type.empty() ? this->_type : "Animal";
+			return this->_type;
 		};
 	protected:
 		std::string	_type;
