@@ -6,7 +6,7 @@
 /*   By: romaurel <romaurel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 14:44:25 by robin             #+#    #+#             */
-/*   Updated: 2023/06/13 17:50:40 by romaurel         ###   ########.fr       */
+/*   Updated: 2023/06/13 18:57:32 by romaurel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ class Point
 		float getY(void) const;
 
 	private:
-		Fixed _x;
-		Fixed _y;
+		Fixed const _x;
+		Fixed const _y;
 };
 
 std::ostream & operator<<(std::ostream & o, Point const & rhs);
