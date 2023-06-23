@@ -6,7 +6,7 @@
 /*   By: romaurel <romaurel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 15:18:51 by romaurel          #+#    #+#             */
-/*   Updated: 2023/06/20 13:13:08 by romaurel         ###   ########.fr       */
+/*   Updated: 2023/06/23 15:32:50 by romaurel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,24 +30,16 @@ class Bureaucrat
 			else
 				this->_grade = grade;
 		};
-		Bureaucrat(Bureaucrat const & src){
-			*this = src;
-		};
-		~Bureaucrat(void){
-		};
+		Bureaucrat(Bureaucrat const & src){ *this = src; };
+		~Bureaucrat(void){};
 
 		Bureaucrat&	operator=(Bureaucrat const & rhs){
 			if (this != &rhs)
 				this->_grade = rhs._grade;
 			return *this;
 		};
-
-		std::string const	getName(void) const{
-			return this->_name;
-		};
-		int					getGrade(void) const{
-			return this->_grade;
-		};
+		std::string const	getName(void) const{ return this->_name; };
+		int					getGrade(void) const{ return this->_grade; };
 
 		void				incrementGrade(void){
 			if (this->_grade - 1 < MAX_GRADE)
@@ -66,45 +58,27 @@ class Bureaucrat
 		{
 			public:
 				GradeTooHighException(void){};
-				GradeTooHighException(GradeTooHighException const & src){
-					*this = src;
-				};
+				GradeTooHighException(GradeTooHighException const & src){ *this = src; };
 				~GradeTooHighException(void) throw(){};
 
-				GradeTooHighException&	operator=(GradeTooHighException const & rhs){
-					(void)rhs;
-					return *this;
-				};
-
-				virtual const char*		what(void) const throw(){
-					return "Grade too high";
-				};
+				GradeTooHighException&	operator=(GradeTooHighException const & rhs){ (void)rhs; return *this; };
+				virtual const char*		what(void) const throw(){ return "Grade too high"; };
 		};
 
 		class GradeTooLowException : public std::exception
 		{
 			public:
 				GradeTooLowException(void){};
-				GradeTooLowException(GradeTooLowException const & src){
-					*this = src;
-				};
+				GradeTooLowException(GradeTooLowException const & src){ *this = src; };
 				~GradeTooLowException(void) throw(){};
 
-				GradeTooLowException&	operator=(GradeTooLowException const & rhs){
-					(void)rhs;
-					return *this;
-				};
-
-				virtual const char*		what(void) const throw(){
-					return "Grade too low";
-				};
+				GradeTooLowException&	operator=(GradeTooLowException const & rhs){ (void)rhs; return *this; };
+				virtual const char*		what(void) const throw(){ return "Grade too low"; };
 		};
 
 
 	private:
-		Bureaucrat(void){
-			this->_grade = 0;
-		};
+		Bureaucrat(void){ this->_grade = 0; };
 
 		std::string const	_name;
 		int					_grade;
