@@ -1,46 +1,40 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   PresidentialPardonForm.hpp                         :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: romaurel <romaurel@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/23 18:47:35 by romaurel          #+#    #+#             */
-/*   Updated: 2023/06/23 19:36:13 by romaurel         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+#pragma once
 
-#ifndef PRESIDENTIALPARDONFORM_HPP
-# define PRESIDENTIALPARDONFORM_HPP
+#include <string>
+#include <iostream>
+#include "Form.hpp"
 
-# define SIGN_GRADE 25
-# define EXEC_GRADE 5
+class Form;
 
-# include "Form.hpp"
-
-class PresidentialPardonForm : public Form
+class Bureaucrat
 {
 	public:
-		PresidentialPardonForm(std::string const target): Form(target, SIGN_GRADE, EXEC_GRADE){};
-		PresidentialPardonForm(PresidentialPardonForm const & src){ *this = src;};
-		~PresidentialPardonForm(void){};
+		Bureaucrat(std::string const name, int grade);
+		Bureaucrat(Bureaucrat const & src);
+		Bureaucrat(void);
+		~Bureaucrat(void);
 
-		PresidentialPardonForm&	operator=(PresidentialPardonForm const & rhs){
-			if (this != &rhs)
-				this->Form::operator=(rhs);
-			return *this;
+		Bureaucrat&	operator=(Bureaucrat const & rhs);
+
+		std::string const	getName(void) const;
+		int					getGrade(void) const;
+		void				incrementGrade(void);
+		void				decrementGrade(void);
+		void				signForm(Form & form) const;
+		void				executeForm(Form const & form) const;
+
+		class GradeTooHighException : public std::exception
+		{
+			public:
+				virtual const char*	what(void) const throw();
+		};
+		class GradeTooLowException : public std::exception
+		{
+			public:
+				virtual const char*	what(void) const throw();
 		};
 
-		void	execute(Bureaucrat const & executor) const{
-			if (this->getSigned() == false)
-				throw Form::FormNotSignedException();
-			else if (executor.getGrade() > this->getExecGrade())
-				throw Form::GradeTooLowException();
-			else
-				std::cout << this->getTarget() << " has been pardoned by Zafod Beeblebrox." << std::endl;
-		};
 	private:
-		PresidentialPardonForm(void) : Form("PresidentialPardonForm", SIGN_GRADE, EXEC_GRADE){};
+		std::string const	_name;
+		int					_grade;
 };
-
-#endif

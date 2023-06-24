@@ -6,88 +6,50 @@
 /*   By: romaurel <romaurel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 15:18:51 by romaurel          #+#    #+#             */
-/*   Updated: 2023/06/23 15:32:50 by romaurel         ###   ########.fr       */
+/*   Updated: 2023/06/24 15:57:35 by romaurel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BUREAUCRAT_HPP
-# define BUREAUCRAT_HPP
-
+#pragma once
 # define MAX_GRADE 1
 # define MIN_GRADE 150
 
 # include <iostream>
 # include <stdexcept>
+# include "Form.hpp"
 
+class Form;
 class Bureaucrat
 {
 	public:
-		Bureaucrat(std::string const name, int grade) : _name(name){
-			if (grade < MAX_GRADE)
-				throw Bureaucrat::GradeTooHighException();
-			else if (grade > MIN_GRADE)
-				throw Bureaucrat::GradeTooLowException();
-			else
-				this->_grade = grade;
-		};
-		Bureaucrat(Bureaucrat const & src){ *this = src; };
-		~Bureaucrat(void){};
-
-		Bureaucrat&	operator=(Bureaucrat const & rhs){
-			if (this != &rhs)
-				this->_grade = rhs._grade;
-			return *this;
-		};
-		std::string const	getName(void) const{ return this->_name; };
-		int					getGrade(void) const{ return this->_grade; };
-
-		void				incrementGrade(void){
-			if (this->_grade - 1 < MAX_GRADE)
-				throw Bureaucrat::GradeTooHighException();
-			else
-				this->_grade--;
-		};
-		void				decrementGrade(void){
-			if (this->_grade + 1 > MIN_GRADE)
-				throw Bureaucrat::GradeTooLowException();
-			else
-				this->_grade++;
-		};
+		Bureaucrat(std::string const name, int grade);
+		Bureaucrat(Bureaucrat const & src);
+		~Bureaucrat(void);
+		Bureaucrat&	operator=(Bureaucrat const & rhs);
+		
+		std::string const	getName(void) const;
+		int					getGrade(void) const;
+		void				incrementGrade(void);
+		void				decrementGrade(void);
+		void				signForm(Form & form) const;
 
 		class GradeTooHighException : public std::exception
 		{
 			public:
-				GradeTooHighException(void){};
-				GradeTooHighException(GradeTooHighException const & src){ *this = src; };
-				~GradeTooHighException(void) throw(){};
-
-				GradeTooHighException&	operator=(GradeTooHighException const & rhs){ (void)rhs; return *this; };
-				virtual const char*		what(void) const throw(){ return "Grade too high"; };
+				virtual const char*		what(void) const throw();
 		};
-
 		class GradeTooLowException : public std::exception
 		{
 			public:
-				GradeTooLowException(void){};
-				GradeTooLowException(GradeTooLowException const & src){ *this = src; };
-				~GradeTooLowException(void) throw(){};
-
-				GradeTooLowException&	operator=(GradeTooLowException const & rhs){ (void)rhs; return *this; };
-				virtual const char*		what(void) const throw(){ return "Grade too low"; };
+				virtual const char*		what(void) const throw();
 		};
 
-
 	private:
-		Bureaucrat(void){ this->_grade = 0; };
+		Bureaucrat(void);
 
 		std::string const	_name;
 		int					_grade;
 
 };
 
-std::ostream& operator<<(std::ostream& o, Bureaucrat const & rhs){
-	o << rhs.getName() << ", bureaucrat grade " << rhs.getGrade() << std::endl;
-	return o;
-};
-
-#endif
+std::ostream& operator<<(std::ostream& o, Bureaucrat const & rhs);

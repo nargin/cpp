@@ -6,12 +6,11 @@
 /*   By: romaurel <romaurel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 15:29:11 by romaurel          #+#    #+#             */
-/*   Updated: 2023/06/23 15:39:33 by romaurel         ###   ########.fr       */
+/*   Updated: 2023/06/24 15:58:57 by romaurel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
 
 int		main(void)
 {
