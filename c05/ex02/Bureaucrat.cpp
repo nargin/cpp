@@ -6,7 +6,7 @@
 /*   By: romaurel <romaurel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 15:18:41 by romaurel          #+#    #+#             */
-/*   Updated: 2023/06/24 16:15:11 by romaurel         ###   ########.fr       */
+/*   Updated: 2023/06/24 20:21:45 by romaurel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,14 @@ void				Bureaucrat::signForm(Form & form) const{
 		std::cout << this->_name << " signs " << form.getName() << std::endl;
 	} catch (std::exception & e){
 		std::cout << this->_name << " cannot sign " << form.getName() << " because " << e.what() << std::endl;
+	}
+};
+void 				Bureaucrat::executeForm(Form const &form){
+	try{
+		form.execute(*this);
+		std::cout << this->_name << " executes " << form.getName() << std::endl;
+	} catch (std::exception & e){
+		std::cout << this->_name << " cannot execute " << form.getName() << " because " << e.what() << std::endl;
 	}
 };
 

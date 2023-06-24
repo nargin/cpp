@@ -6,7 +6,7 @@
 /*   By: romaurel <romaurel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 13:29:59 by romaurel          #+#    #+#             */
-/*   Updated: 2023/06/24 15:45:33 by romaurel         ###   ########.fr       */
+/*   Updated: 2023/06/24 20:23:10 by romaurel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ void		Form::beSigned(Bureaucrat const & bureaucrat) {
 
 const char *		Form::GradeTooHighException::what(void) const throw() { return ("Grade too high"); }
 const char *		Form::GradeTooLowException::what(void) const throw() { return ("Grade too low"); }
+const char *		Form::FormNotSignedException::what(void) const throw() { return ("Form not signed"); }
 
 std::ostream &	operator<<(std::ostream & o, Form const & rhs){
 	if (rhs.getSigned())

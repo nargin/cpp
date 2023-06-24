@@ -6,7 +6,7 @@
 /*   By: romaurel <romaurel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 15:18:51 by romaurel          #+#    #+#             */
-/*   Updated: 2023/06/24 15:57:35 by romaurel         ###   ########.fr       */
+/*   Updated: 2023/06/24 20:21:30 by romaurel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ class Bureaucrat
 		void				incrementGrade(void);
 		void				decrementGrade(void);
 		void				signForm(Form & form) const;
+		void 				executeForm(Form const &form);
 
 		class GradeTooHighException : public std::exception
 		{

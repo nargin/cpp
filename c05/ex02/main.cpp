@@ -6,50 +6,63 @@
 /*   By: romaurel <romaurel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 15:29:11 by romaurel          #+#    #+#             */
-/*   Updated: 2023/06/24 15:58:57 by romaurel         ###   ########.fr       */
+/*   Updated: 2023/06/24 20:20:15 by romaurel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
+#include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "PresidentialPardonForm.hpp"
 
 int		main(void)
 {
-	Bureaucrat	*romain = new Bureaucrat("Romain", 1);
-	Bureaucrat	*romain2 = new Bureaucrat("Romain2", 150);
-	Form		*form = new Form("Form", 1, 1);
-	Form		*form2 = new Form("Form2", 150, 150);
+	Bureaucrat		*hermes = new Bureaucrat("Hermes Conrad", 37);
+	Bureaucrat		*leela = new Bureaucrat("Turanga Leela", 1);
+	Bureaucrat		*bender = new Bureaucrat("Bender Bending Rodriguez", 150);
+	Form			*shrubbery = new ShrubberyCreationForm("home");
+	Form			*robotomy = new RobotomyRequestForm("Bender");
+	Form			*presidential = new PresidentialPardonForm("Zapp Brannigan");
 
-	std::cout << *romain << std::endl;
-	std::cout << *romain2 << std::endl;
-	std::cout << *form << std::endl;
-	std::cout << *form2 << std::endl;
+	std::cout << *hermes << *leela << *bender << std::endl;
+	std::cout << *shrubbery << *robotomy << *presidential << std::endl;
 
-	try	{ romain->incrementGrade();
-	} catch (std::exception & e) {
-		std::cout << e.what() << std::endl;
-	}
-	try {
-		romain2->decrementGrade();
-	} catch (std::exception & e) {
-		std::cout << e.what() << std::endl;
-	}
-	try {
-		form->beSigned(*romain);
-	} catch (std::exception & e) {
-		std::cout << e.what() << std::endl;
-	}
-	try {
-		form2->beSigned(*romain2);
-	} catch (std::exception & e) {
-		std::cout << e.what() << std::endl;
-	}
-	std::cout << *romain << std::endl;
-	std::cout << *romain2 << std::endl;
-	std::cout << *form << std::endl;
-	std::cout << *form2 << std::endl;
-	delete romain;
-	delete romain2;
-	delete form;
-	delete form2;
+	hermes->signForm(*shrubbery);
+	hermes->signForm(*robotomy);
+	hermes->signForm(*presidential);
+	std::cout << *shrubbery << *robotomy << *presidential << std::endl;
+
+	leela->signForm(*shrubbery);
+	leela->signForm(*robotomy);
+	leela->signForm(*presidential);
+	std::cout << *shrubbery << *robotomy << *presidential << std::endl;
+
+	bender->signForm(*shrubbery);
+	bender->signForm(*robotomy);
+	bender->signForm(*presidential);
+	std::cout << *shrubbery << *robotomy << *presidential << std::endl;
+
+	hermes->executeForm(*shrubbery);
+	hermes->executeForm(*robotomy);
+	hermes->executeForm(*presidential);
+	std::cout << *shrubbery << *robotomy << *presidential << std::endl;
+
+	leela->executeForm(*shrubbery);
+	leela->executeForm(*robotomy);
+	leela->executeForm(*presidential);
+	std::cout << *shrubbery << *robotomy << *presidential << std::endl;
+
+	bender->executeForm(*shrubbery);
+	bender->executeForm(*robotomy);
+	bender->executeForm(*presidential);
+	std::cout << *shrubbery << *robotomy << *presidential << std::endl;
+
+	delete hermes;
+	delete leela;
+	delete bender;
+	delete shrubbery;
+	delete robotomy;
+	delete presidential;
 	return (0);
 }
