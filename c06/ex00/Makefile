@@ -1,6 +1,6 @@
 CXX = c++
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98
-NAME = borzoi
+CXXFLAGS = -Wall -Wextra -Werror -std=c++11
+NAME = convert
 SRC = main.cpp ScalarConverter.cpp
 OBJ = $(SRC:.cpp=.o)
 
