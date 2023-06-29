@@ -1,5 +1,5 @@
 CXX = c++
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98
+CXXFLAGS = -Wall -Wextra -Werror -std=c++11
 NAME = giratina
 SRC = main.cpp
 OBJ = $(SRC:.cpp=.o)
