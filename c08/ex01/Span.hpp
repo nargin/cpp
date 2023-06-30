@@ -5,7 +5,7 @@
 template <typename T>
 class Span {
 	public:
-		Span(size_t n) : _size(n), _count(0), _array(new T[n]) {}
+		Span(size_t n) : _count(0), _size(n), _array(new T[n]) {}
 		Span(Span const & src) : _size(src._size), _count(src._count),_array(new T[src._size]) {
 			for (size_t i = 0; i < _size; i++)
 				_array[i] = src._array[i];
@@ -35,11 +35,11 @@ class Span {
 			throw OutOfBoundsException();
 		}
 
-		void addNumber(T const * begin, T const * end) {
+		void addNumber(T const * begin) {
 			if (_size == 0 || _count == _size)
 				throw OutOfBoundsException();
 			for (size_t i = 0; i < _size; i++) {
-				if (_array[i] == 0) {
+				if (_array[i] == 0 ) {
 					_array[i] = *begin;
 					begin++;
 					if (begin == end)
