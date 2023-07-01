@@ -24,29 +24,39 @@ class Span {
 		}
 
 		void	addNumber(T const & n) {
-			if (_size == 0 || _count == _size)
+			if (_size == 0 || _count >= _size)
 				throw OutOfBoundsException();
-			for (size_t i = 0; i < _size; i++) {
-				if (_array[i] == 0) {
-					_array[i] = n;
-					return ;
-				}
-			}
-			throw OutOfBoundsException();
+			_array[_count++] = n;
 		}
 
-		void addNumber(T const * begin) {
-			if (_size == 0 || _count == _size)
+		void addNumber(T const * src, T const length) {
+			if (_size == 0)
 				throw OutOfBoundsException();
-			for (size_t i = 0; i < _size; i++) {
-				if (_array[i] == 0 ) {
-					_array[i] = *begin;
-					begin++;
-					if (begin == end)
-						return ;
-				}
+			for (size_t i = 0; i < length; i++, _count++) {
+				_array[i] = src[i];
 			}
-			throw OutOfBoundsException();
+		}
+
+		T const shortestSpan(void) const {
+			if (_size == 0 || _count < 2)
+				throw OutOfBoundsException();
+			T shortest = _array[0];
+			for (size_t i = 0; i < _count; i++) {
+				if (_array[i] < shortest)
+					shortest = _array[i];
+			}
+			return shortest;
+		}
+
+		T const longestSpan(void) const {
+			if (_size == 0 || _count < 2)
+				throw OutOfBoundsException();
+			T longest = _array[0];
+			for (size_t i = 0; i < _count; i++) {
+				if (_array[i] > longest)
+					longest = _array[i];
+			}
+			return longest;
 		}
 
 		T & operator[](size_t i) const {
@@ -58,10 +68,10 @@ class Span {
 		class OutOfBoundsException : public std::exception {
 			public:
 				virtual const char * what(void) const throw() { return "Span: Out of bounds"; }
-				virtual const char * segfault(void) const throw() { return "Span: can't add more"; }
 		};
 
 		size_t size(void) const { return _size; }
+		size_t counting(void) const { return _count; }
 
 	private:
 		size_t _count;
