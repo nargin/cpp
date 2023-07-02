@@ -2,6 +2,7 @@
 
 #include <iostream>
 
+
 template <typename T>
 class Span {
 	public:
@@ -23,6 +24,8 @@ class Span {
 			return *this;
 		}
 
+		unsigned int cuve(int n) { return (n < 0) ? -n : n; }
+
 		void	addNumber(T const & n) {
 			if (_size == 0 || _count >= _size)
 				throw OutOfBoundsException();
@@ -30,31 +33,33 @@ class Span {
 		}
 
 		void addNumber(T const * src, T const length) {
-			if (_size == 0)
+			if (_size == 0 || _count + length > _size || length == 0)
 				throw OutOfBoundsException();
-			for (size_t i = 0; i < length; i++, _count++) {
+			for (size_t i = 0; i < length; i++) {
 				_array[i] = src[i];
+				if (++_count > _size)
+					throw OutOfBoundsException();
 			}
 		}
 
-		T const shortestSpan(void) const {
+		unsigned int shortestSpan(void) {
 			if (_size == 0 || _count < 2)
 				throw OutOfBoundsException();
-			T shortest = _array[0];
-			for (size_t i = 0; i < _count; i++) {
-				if (_array[i] < shortest)
-					shortest = _array[i];
+			unsigned int shortest = cuve(_array[0] - _array[1]);
+			for (size_t i = 1; i < _count; i++) {
+				if (cuve(_array[i] - _array[i - 1]) < shortest)
+				shortest = cuve(_array[i] - _array[i - 1]);
 			}
 			return shortest;
 		}
 
-		T const longestSpan(void) const {
+		unsigned int longestSpan(void) {
 			if (_size == 0 || _count < 2)
 				throw OutOfBoundsException();
-			T longest = _array[0];
-			for (size_t i = 0; i < _count; i++) {
-				if (_array[i] > longest)
-					longest = _array[i];
+			unsigned int longest = cuve(_array[0] - _array[1]);
+			for (size_t i = 1; i < _count; i++) {
+				if (cuve(_array[i] - _array[i - 1]) > longest)
+					longest = cuve(_array[i] - _array[i - 1]);
 			}
 			return longest;
 		}
@@ -74,6 +79,7 @@ class Span {
 		size_t counting(void) const { return _count; }
 
 	private:
+		Span(void) : _count(0), _size(0), _array(NULL) {}
 		size_t _count;
 		size_t _size;
 		T *_array;

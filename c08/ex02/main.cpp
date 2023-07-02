@@ -26,9 +26,11 @@ int main()
 	--it;
 	
 	while (it != ite) {
-	std::cout << *it << std::endl;
-	++it;
+		std::cout << *it << std::endl;
+		++it;
 	}
+	std::cout << "m size: " << mstack.size() << std::endl;
 	std::stack<int> s(mstack);
+	std::cout << "s size: " << s.size() << std::endl;
 	return 0;
 }
