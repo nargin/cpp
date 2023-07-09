@@ -6,7 +6,6 @@ int	main(int ac, char *av[]){
 		return (1);
 	}
 	BitcoinExchange exchange(av[1]);
-	std::cout << "exchange print" << std::endl;	
 	exchange.print();
 	return (0);
 }
