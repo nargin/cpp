@@ -27,14 +27,14 @@ class BitcoinExchange {
 			_filename = filename;
 			std::ifstream file("data.csv");
 			if (!file.is_open()){
-				std::cout << "Error: could not open file" << std::endl;
+				std::cout << "Error: can't open csv db" << std::endl;
 				exit(1);
 			}
 			std::string line;
-			std::cout << "file is open" << std::endl;
+			// std::cout << "file is open" << std::endl;
 			std::getline(file, line);
-			std::cout << "Extracting data of type : " << line.substr(0, line.find_first_of(',')) + " and " << line.substr(line.find_first_of(',') + 1, line.length()) << std::endl;
-			std::cout << "Data in a hashmap alias magic container" << std::endl;
+			// std::cout << "Extracting data of type : " << line.substr(0, line.find_first_of(',')) + " and " << line.substr(line.find_first_of(',') + 1, line.length()) << std::endl;
+			// std::cout << "Data in a hashmap alias magic container" << std::endl;
 			while (std::getline(file, line)){
 				std::string date = line.substr(0, line.find_first_of(','));
 				double price = std::stod(line.substr(line.find_first_of(',') + 1, line.length()));
@@ -53,7 +53,7 @@ class BitcoinExchange {
 			std::string date;
 			double price;
 			std::getline(file, line);
-			std::cout << "format extracted : " << line << std::endl;
+			// std::cout << "format extracted : " << line << std::endl;
 			while (std::getline(file, line)) {
 				date = line.substr(0, line.find_first_of('|'));
 				date.erase(std::remove(date.begin(), date.end(), ' '), date.end());
