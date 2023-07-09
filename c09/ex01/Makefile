@@ -1,20 +1,46 @@
-CXX = c++
-CXXFLAGS = -Wall -Wextra -Werror -std=c++11
-NAME = RPN
-SRC = main.cpp
-OBJ = $(SRC:.cpp=.o)
+NOCOLOR			= \033[0m
+BOLD			= \033[1m
+WHITE			= \033[1;37m
+RED				= \033[0;31m
+LIGHTPURPLE		= \033[1;35m
+CLEAR			= \r\033[K
+LIGHTGRAY		= \033[0;37m
+GREEN			= \033[0;32m
+GRAYDRK			= \033[0;30m
 
-all: $(NAME)
+SRC 		= main.cpp
 
-$(NAME): $(OBJ)
-	$(CXX) $(CXXFLAGS) -I./ $(OBJ) -o $(NAME)
+OBJS_DIR	= ./objs/
+OBJS 		= ${addprefix ${OBJS_DIR}, $(SRC:.cpp=.o)}
+
+CC 			= c++
+
+FLAGS		= -Wall -Wextra -Werror -std=c++11
+
+RM  		= rm -rf
+
+NAME		 = RPN
+
+all: 		$(NAME)
+
+${OBJS_DIR}%.o: %.cpp
+			@printf "${CLEAR}${LIGHTGRAY}${BOLD}	Compiling...${NOCOLOR}"
+			@$(CC) $(FLAGS) -c $< -o $@
+
+$(NAME):	$(OBJS)
+			@$(CC) $(FLAGS) $(OBJS) -o $(NAME) 
+			@printf "${CLEAR}${GREEN}${BOLD}	Compiled!\n${NOCOLOR}"
+
+${OBJS}:	| ${OBJS_DIR}
+
+${OBJS_DIR}:
+			@mkdir ${OBJS_DIR}
 
 clean:
-	rm -f $(OBJ)
+			@printf "${CLEAR}${LIGHTPURPLE}${BOLD}	Cleaned!\n${NOCOLOR}"
+			@$(RM) $(OBJS_DIR)
 
-fclean: clean
-	rm -f $(NAME)
+fclean:		clean
+			@$(RM) $(NAME)
 
-re: fclean all
-
-.PHONY: all clean fclean re
+re:			fclean $(NAME)

@@ -19,7 +19,7 @@ FLAGS		= -Wall -Wextra -Werror -std=c++11
 
 RM  		= rm -rf
 
-NAME		 = btc
+NAME		 = PmergeMe
 
 all: 		$(NAME)
 
