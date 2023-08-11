@@ -34,9 +34,9 @@ void	Harl::complain(std::string level) {
 			std::cout << "[WARNING]\nThis is a warning!" << std::endl;
 		case 3:
 			std::cout << "[ERROR]\nErrors errors errors" << std::endl;
+			break;
 		default:
 			std::cout << "[Probably complaining about insignificant problems]" << std::endl;
-			break;
 	}
 	return ;
 }
